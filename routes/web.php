@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\MessageEventsController;
 use \App\Http\Controllers\TicTacToeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,7 +26,9 @@ Route::get('/private/{privateId}', function () {
 
 Route::post('/messages', [MessageEventsController::class, 'takeEvent']);
 
-Route::post('/connect', [TicTacToeController::class, 'connect']);
+Route::post('/connectToRoom', [TicTacToeController::class, 'connect']);
+
+Route::post('/makeMove', [TicTacToeController::class, 'makeMove']);
 
 Auth::routes();
 
