@@ -1,0 +1,24 @@
+body {
+    margin: 0;
+}
+
+.create__game {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.create__game__btn {
+    font-size: 60px;
+    color: #222222;
+    outline: none;
+    text-decoration: none;
+}
+
+.create__game__btn:hover {
+    color: #bd8a8a;
+    transition: .3s ease all;
+}
