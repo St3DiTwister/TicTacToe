@@ -1,31 +1,41 @@
 import React, {useEffect, useState} from 'react';
-import {useLocation} from "react-router-dom";
 
+import "./css/Messenger.css";
 const Messenger = (props) => {
     const [messages, setMessages] = useState([]);
     const [value, setValue] =useState('');
 
     useEffect(() => {
-        window.Echo.channel('game').listen('MessageEvent', ({message}) => {
+        window.Echo.channel('tictactoe').listen('MessageEvent', ({message}) => {
             setMessages((prev)=>[...prev, message]);
         });
     }, []);
 
     const sendMessage = () => {
-        axios.post('/messages', {body: value});
+        if (props.gameStart === null){
+            return null
+        }
+        axios.post('/messages', {body: props.isCreator ? "X: "+value : "O: "+value});
         setMessages([...messages, value])
         setValue('');
+    }
+    const onKeyDown = e => {
+        if (e.key === 'Enter'){
+            sendMessage();
+        }
     }
     return (
         <div className="container">
             <div className="col-sm-12">
-                <textarea className="form-control" rows="10" readOnly={true} value={
+                <textarea className="input_style" id="textInArea" rows="10" readOnly={true} value={
                     messages.join('\n')
                 }>
                 </textarea>
-                <hr/>
-                <input type="text" className="form-control" value={value} onChange={event => setValue(event.target.value)}/>
-                <button type="button" onClick={sendMessage}>Отправить</button>
+
+                <div className="input_style">
+                    <input className="" type="text" placeholder="Введите сообщение" onKeyDown={onKeyDown} value={value} onChange={event => setValue(event.target.value)} />
+                    <button type="button" onClick={sendMessage}>></button>
+                </div>
             </div>
         </div>
     );

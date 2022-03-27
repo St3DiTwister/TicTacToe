@@ -4,6 +4,7 @@ import './css/Game.css'
 import Board from "./Board";
 import {calculateWinner} from "../helper";
 import {useLocation} from "react-router-dom";
+import Messenger from "./Messenger";
 
 const Game = () => {
     const [board, setBoard] = useState(Array(9).fill(null))
@@ -23,6 +24,9 @@ const Game = () => {
             axios.post('/connectToRoom');
             setXIsNext(true)
         }
+        channel.listen('NewGameEvent', ({}) => {
+            setBoard(Array(9).fill(null))
+        })
     }, []);
 
     const channel = window.Echo.channel('tictactoe')
@@ -31,6 +35,7 @@ const Game = () => {
         setXIsNext(!xIsNext)
     });
 
+    //Переменная создателя, если человек нажал на кнопку "Начать игру", то isCreator = true, если подключился по ссылке, то isCreator = false
     let isCreator = null
     if (location.state == null){
         isCreator = false
@@ -59,17 +64,21 @@ const Game = () => {
 
     const startNewGame = () => {
         return (
-            <button className="start__btn" onClick={() => setBoard(Array(9).fill(null))}>Очистить поле</button>
+            <button className="start__btn" onClick={function(){
+                setBoard(Array(9).fill(null))
+                axios.post('/newGame')
+            }}>Очистить поле</button>
         )
     }
 
     return (
         <div className="wrapper">
-            { startNewGame() }
+            {isCreator === true ? startNewGame() : null}
             <Board squares={board} click={handleClick}/>
             <p className="game__info">
                 {winner === 'draw' ? 'Ничья!' : (xIsNext == null ? 'Ждем подключения друга' : (winner ? 'Победитель ' + winner : 'Сейчас ходит ' + (xIsNext ? 'X' : 'O')))}
             </p>
+            <Messenger isCreator={isCreator} gameStart={xIsNext}/>
         </div>
     );
 };

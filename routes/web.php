@@ -30,6 +30,8 @@ Route::post('/connectToRoom', [TicTacToeController::class, 'connect']);
 
 Route::post('/makeMove', [TicTacToeController::class, 'makeMove']);
 
+Route::post('/newGame', [TicTacToeController::class, 'newGame']);
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
