@@ -1,5 +1,5 @@
 {
-	"authHost": "http://tictactoe.test/",
+	"authHost": "http://185.219.41.110/",
 	"authEndpoint": "/broadcasting/auth",
 	"clients": [],
 	"database": "redis",
