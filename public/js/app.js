@@ -6246,7 +6246,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".board {\n    display: flex;\n    flex-wrap: wrap;\n    width: 300px;\n    height: 300px;\n    background: red;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".board {\n    display: flex;\n    flex-wrap: wrap;\n    width: 300px;\n    height: 300px;\n}\n@media only screen and (max-width: 450px){\n    .board {\n        width: 100%;\n    }\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -6318,7 +6318,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".square {\n    width: 100px;\n    height: 100px;\n    background: #ffffff;\n    border: 1px solid #222222;\n    cursor: pointer;\n    outline: none;\n    font-size: 60px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    transition: .3s all ease;\n    box-sizing: border-box;\n}\n\n.square:hover {\n    background: #cecece;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".square {\n    width: 100px;\n    height: 100px;\n    background: #ffffff;\n    border: 1px solid #222222;\n    cursor: pointer;\n    outline: none;\n    font-size: 60px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    transition: .3s all ease;\n    box-sizing: border-box;\n}\n\n.square:hover {\n    background: #cecece;\n}\n\n@media only screen and (max-width: 450px){\n    .square {\n        width: 33%;\n        height: 33%;\n    }\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

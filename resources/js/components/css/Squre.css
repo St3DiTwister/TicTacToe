@@ -16,3 +16,10 @@
 .square:hover {
     background: #cecece;
 }
+
+@media only screen and (max-width: 450px){
+    .square {
+        width: 33%;
+        height: 33%;
+    }
+}
